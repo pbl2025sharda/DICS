@@ -96,3 +96,4 @@ export function ScoreCharts({ scores }: { scores: DiscScores }) {
     </div>
   );
 }
+
