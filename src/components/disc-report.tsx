@@ -19,14 +19,11 @@ import {
 } from "@/components/ui/table";
 import {
   Award,
-  BarChart,
   ClipboardCheck,
   Download,
   HeartHandshake,
   Megaphone,
-  Radar,
   Target,
-  Users,
 } from "lucide-react";
 import { useMemo } from "react";
 import {
@@ -39,7 +36,6 @@ import {
 } from "@/lib/disc-info";
 import type { DiscScores, DiscCategory, RankedStyle } from "@/lib/types";
 import { ScoreCharts } from "./report-charts";
-import AiInsights from "./ai-insights";
 import { Logo } from "./icons";
 
 const iconMap: Record<DiscCategory, React.ElementType> = {
@@ -174,8 +170,7 @@ export default function DiscReport() {
           {/* Page 5: Summary & Combination */}
           <Card className="printable-card mb-8 shadow-lg">
             <CardHeader>
-              <CardTitle className="text-3xl font-headline">Summary & Quick Reference</CardTitle>
-              <CardDescription>An overview of your results and DISC styles.</CardDescription>
+              <CardTitle className="text-3xl font-headline">Quick Reference</CardTitle>
             </CardHeader>
             <CardContent className="space-y-8">
               {combinationInsight && (
@@ -188,7 +183,6 @@ export default function DiscReport() {
                   </CardContent>
                 </Card>
               )}
-               <AiInsights scores={scores} />
               <Card>
                   <CardHeader>
                       <CardTitle>Quick Reference Chart</CardTitle>
