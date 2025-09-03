@@ -7,7 +7,7 @@ export const Logo = () => (
         xmlns="http://www.w3.org/2000/svg"
         aria-label="Sharda University Logo"
     >
-        <g>
+        <g transform="translate(0, -5)">
             <path d="M25.3262 56.3667V0H58.9062V9.4H35.3862V23.2667H55.6262V32.6H35.3862V46.9667H59.5262V56.3667H25.3262Z" fill="#323232"/>
             <path d="M63.1262 56.3667V0H73.4662V56.3667H63.1262Z" fill="#323232"/>
             <path d="M80.3196 56.3667V0H114.1196V9.4H90.5996V23.2667H110.8396V32.6H90.5996V46.9667H114.7396V56.3667H80.3196Z" fill="#323232"/>
@@ -20,19 +20,21 @@ export const Logo = () => (
             <path d="M5.64665 33.7L10.2667 35.4133L14.8866 33.7C14.2866 34.3133 13.5 34.8 12.6066 35.12C11.7133 35.44 10.96 35.6 10.1333 35.6C9.30665 35.6 8.55332 35.44 7.65999 35.12C6.76665 34.8 5.97999 34.3133 5.37999 33.7H5.64665Z" fill="#F29A33"/>
             <path d="M15.4 35.7933C15.4 35.0333 15.2133 34.32 14.8866 33.7L10.2667 26.3467L5.64665 33.7C6.80665 32.6667 8.48 32 10.2667 32C12.0533 32 13.7266 32.6667 14.8866 33.7C15.2133 34.32 15.4 35.0333 15.4 35.7933Z" fill="#EC008C"/>
         </g>
-        <text 
-            fill="#323232" 
-            xmlSpace="preserve" 
-            style={{
-                whiteSpace: "pre",
-                fontFamily: "serif",
-                fontSize: "10px",
-                letterSpacing: "0.2px"
-            }}
-            x="73"
-            y="52"
-        >
-            Beyond Boundaries
-        </text>
+        <g transform="translate(0, 50)">
+             <text 
+                fill="#323232" 
+                xmlSpace="preserve" 
+                style={{
+                    whiteSpace: "pre",
+                    fontFamily: "serif",
+                    fontSize: "10px",
+                    letterSpacing: "0.2px"
+                }}
+                x="73"
+                y="0"
+            >
+                Beyond Boundaries
+            </text>
+        </g>
     </svg>
 )
