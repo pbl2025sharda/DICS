@@ -1,6 +1,6 @@
 "use client";
 
-import { BarChart, CartesianGrid, XAxis, YAxis, Bar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Legend, Cell } from 'recharts';
+import { BarChart, CartesianGrid, XAxis, YAxis, Bar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Cell } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import type { DiscScores } from "@/lib/types";
@@ -18,10 +18,10 @@ export function ScoreCharts({ scores }: { scores: DiscScores }) {
   const name = searchParams.get("name") || "Participant";
 
   const chartData = [
-    { style: 'D', score: scores.D, fill: chartConfig.D.color },
-    { style: 'I', score: scores.I, fill: chartConfig.I.color },
-    { style: 'S', score: scores.S, fill: chartConfig.S.color },
-    { style: 'C', score: scores.C, fill: chartConfig.C.color },
+    { style: 'D', score: scores.D },
+    { style: 'I', score: scores.I },
+    { style: 'S', score: scores.S },
+    { style: 'C', score: scores.C },
   ];
 
   const radarData = [
@@ -49,7 +49,7 @@ export function ScoreCharts({ scores }: { scores: DiscScores }) {
               />
               <Bar dataKey="score" radius={8}>
                 {chartData.map((entry) => (
-                  <Cell key={`cell-${entry.style}`} fill={entry.fill} />
+                  <Cell key={`cell-${entry.style}`} fill={`var(--color-${entry.style})`} />
                 ))}
               </Bar>
             </BarChart>
