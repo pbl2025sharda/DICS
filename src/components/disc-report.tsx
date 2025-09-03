@@ -114,8 +114,10 @@ export default function DiscReport() {
           {/* Page 1: Cover */}
           <Card className="printable-card mb-8 shadow-lg page-break">
             <CardContent className="p-10 flex flex-col items-center justify-center text-center h-[90vh]">
-               <Logo />
-              <h1 className="text-5xl font-bold font-headline mt-6">DISC Personality Report</h1>
+               <div className="flex justify-center items-center mb-6">
+                <Logo />
+               </div>
+              <h1 className="text-5xl font-bold font-headline">DISC Personality Report</h1>
               <p className="text-2xl text-muted-foreground mt-4">An analysis of your behavioral style</p>
               <div className="mt-24 text-xl space-y-2">
                 <p><strong>Name:</strong> {name}</p>

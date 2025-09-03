@@ -125,7 +125,7 @@ export default function DiscAssessmentForm() {
     <div className="container mx-auto py-10 px-4">
       <Card className="max-w-4xl mx-auto shadow-xl">
         <CardHeader className="text-center">
-            <div className="mx-auto">
+            <div className="flex justify-center items-center">
              <Logo />
             </div>
           <CardTitle className="text-3xl font-headline">DISC Assessment</CardTitle>
@@ -197,5 +197,3 @@ export default function DiscAssessmentForm() {
     </div>
   );
 }
-
-    

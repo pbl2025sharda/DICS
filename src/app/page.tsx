@@ -23,7 +23,7 @@ export default function Home() {
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <Card className="w-full max-w-2xl shadow-2xl">
         <CardHeader className="text-center">
-          <div className="mx-auto mb-4">
+          <div className="flex justify-center items-center mb-4">
              <Logo />
           </div>
           <CardTitle className="text-3xl font-headline">DISC Insights Analyzer</CardTitle>
