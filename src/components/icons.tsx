@@ -18,6 +18,17 @@ export const Logo = () => (
         <path d="M10.2667 26.3467L5.64665 33.7C6.80665 34.7333 8.48 35.4133 10.2667 35.4133C12.0533 35.4133 13.7266 34.7333 14.8866 33.7L10.2667 26.3467Z" fill="#FFD200"/>
         <path d="M5.64665 33.7L10.2667 35.4133L14.8866 33.7C14.2866 34.3133 13.5 34.8 12.6066 35.12C11.7133 35.44 10.96 35.6 10.1333 35.6C9.30665 35.6 8.55332 35.44 7.65999 35.12C6.76665 34.8 5.97999 34.3133 5.37999 33.7H5.64665Z" fill="#F29A33"/>
         <path d="M15.4 35.7933C15.4 35.0333 15.2133 34.32 14.8866 33.7L10.2667 26.3467L5.64665 33.7C6.80665 32.6667 8.48 32 10.2667 32C12.0533 32 13.7266 32.6667 14.8866 33.7C15.2133 34.32 15.4 35.0333 15.4 35.7933Z" fill="#EC008C"/>
-        <text fill="#323232" xmlSpace="preserve" style={{whiteSpace:"pre", fontFamily:"serif", fontSize:"12px", letterSpacing:"0.2px"}}><tspan x="73" y="52">Beyond Boundaries</tspan></text>
+        <text 
+            fill="#323232" 
+            xmlSpace="preserve" 
+            style={{
+                whiteSpace: "pre",
+                fontFamily: "serif",
+                fontSize: "12px",
+                letterSpacing: "0.2px"
+            }}
+        >
+            <tspan x="73" y="52">Beyond Boundaries</tspan>
+        </text>
     </svg>
 )
