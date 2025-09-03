@@ -1,3 +1,4 @@
+
 "use client";
 
 import { BarChart, CartesianGrid, XAxis, YAxis, Bar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, LabelList, Rectangle } from 'recharts';
@@ -38,7 +39,7 @@ const CustomBar = (props: any) => {
     const { x, y, width, height, payload } = props;
     const fillColor = colorMapping[payload.style as keyof DiscScores];
     // We only pass the props that Rectangle needs, excluding the problematic `style` prop
-    return <Rectangle x={x} y={y} width={width} height={height} fill={fillColor} radius={8} />;
+    return <Rectangle x={x} y={y} width={width} height={height} fill={fillColor} />;
 };
 
 
