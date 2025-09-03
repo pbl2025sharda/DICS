@@ -37,6 +37,7 @@ import {
 } from "@/lib/disc-info";
 import type { DiscScores, DiscCategory, RankedStyle } from "@/lib/types";
 import { ScoreCharts } from "./report-charts";
+import { Logo } from "@/components/icons";
 
 const iconMap: Record<DiscCategory, React.ElementType> = {
     D: Target,
@@ -113,7 +114,7 @@ export default function DiscReport() {
           {/* Page 1: Cover */}
           <Card className="printable-card mb-8 shadow-lg page-break">
             <CardContent className="p-10 flex flex-col items-center justify-center text-center h-[90vh]">
-               <Image src="https://www.sharda.ac.in/blog/wp-content/uploads/2024/02/logo-2.png" alt="Sharda University Logo" width={300} height={85} />
+               <Logo />
               <h1 className="text-5xl font-bold font-headline mt-6">DISC Personality Report</h1>
               <p className="text-2xl text-muted-foreground mt-4">An analysis of your behavioral style</p>
               <div className="mt-24 text-xl space-y-2">

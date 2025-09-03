@@ -13,7 +13,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Progress } from "@/components/ui/progress";
 import { useEffect, useState } from "react";
-import Image from "next/image";
+import { Logo } from "@/components/icons";
 
 // Dynamically create the Zod schema
 const questionSchema = z.object({
@@ -126,7 +126,7 @@ export default function DiscAssessmentForm() {
       <Card className="max-w-4xl mx-auto shadow-xl">
         <CardHeader className="text-center">
             <div className="mx-auto">
-             <Image src="https://www.sharda.ac.in/blog/wp-content/uploads/2024/02/logo-2.png" alt="Sharda University Logo" width={300} height={85} />
+             <Logo />
             </div>
           <CardTitle className="text-3xl font-headline">DISC Assessment</CardTitle>
           <CardDescription>
