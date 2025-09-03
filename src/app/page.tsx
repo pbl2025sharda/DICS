@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Logo } from "@/components/icons";
 
 export default function Home() {
   const [name, setName] = useState("");
@@ -23,7 +23,7 @@ export default function Home() {
       <Card className="w-full max-w-2xl shadow-2xl">
         <CardHeader className="text-center">
           <div className="mx-auto mb-4">
-            <Logo />
+             <Image src="https://www.sharda.ac.in/blog/wp-content/uploads/2024/02/logo-2.png" alt="Sharda University Logo" width={300} height={85} />
           </div>
           <CardTitle className="text-3xl font-headline">DISC Insights Analyzer</CardTitle>
           <CardDescription className="text-lg">Welcome to your Personal Assessment</CardDescription>
