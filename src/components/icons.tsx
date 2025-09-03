@@ -5,26 +5,15 @@ export const Logo = () => (
         viewBox="0 0 50 50"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        aria-label="Logo"
+        aria-label="DISC Assessment Logo"
     >
-        <rect width="50" height="50" rx="8" fill="hsl(var(--card))" />
-        <path
-            d="M25 10C16.7157 10 10 16.7157 10 25C10 33.2843 16.7157 40 25 40C33.2843 40 40 33.2843 40 25C40 16.7157 33.2843 10 25 10ZM25 36C18.9249 36 14 31.0751 14 25C14 18.9249 18.9249 14 25 14C31.0751 14 36 18.9249 36 25C36 31.0751 31.0751 36 25 36Z"
-            fill="hsl(var(--primary) / 0.6)"
-        />
-        <path
-            d="M25 18L32 25L25 32"
-            stroke="hsl(var(--primary))"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-        />
-        <path
-            d="M18 25H32"
-            stroke="hsl(var(--primary))"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-        />
+        <title>DISC Assessment Logo</title>
+        <circle cx="25" cy="25" r="24" stroke="hsl(var(--border))" strokeWidth="2" fill="hsl(var(--card))" />
+        <path d="M25 1 V 49" stroke="hsl(var(--border))" strokeWidth="1.5" />
+        <path d="M1 25 H 49" stroke="hsl(var(--border))" strokeWidth="1.5" />
+        <path d="M25 25 A 24 24 0 0 1 49 25 L 25 25 Z" fill="hsl(var(--chart-1) / 0.7)" />
+        <path d="M25 25 A 24 24 0 0 1 25 49 L 25 25 Z" fill="hsl(var(--chart-2) / 0.7)" />
+        <path d="M25 25 A 24 24 0 0 1 1 25 L 25 25 Z" fill="hsl(var(--chart-3) / 0.7)" />
+        <path d="M25 25 A 24 24 0 0 1 25 1 L 25 25 Z" fill="hsl(var(--chart-4) / 0.7)" />
     </svg>
-)
+);
