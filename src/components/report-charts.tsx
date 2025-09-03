@@ -58,16 +58,17 @@ export function ScoreCharts({ scores }: { scores: DiscScores }) {
           <CardTitle>Score Breakdown</CardTitle>
         </CardHeader>
         <CardContent>
-           <div className="w-full h-[250px] flex justify-around items-end gap-4 p-4 border rounded-lg bg-background">
+           <div className="w-full h-[250px] flex justify-around items-end gap-4 p-4 border rounded-lg bg-background/50">
              {chartData.map((entry) => (
-                <div key={entry.style} className="flex flex-col items-center flex-1">
-                    <div className="text-sm font-bold">{entry.score}</div>
+                <div key={entry.style} className="flex flex-col items-center flex-1 gap-2">
                     <div
-                        className="w-full rounded-t-md"
-                        style={{ height: `${(entry.score / 80) * 100}%`, backgroundColor: entry.color }}
+                        className="w-full rounded-t-md relative"
+                        style={{ height: '100%'}}
                     >
+                      <div className="absolute bottom-0 w-full rounded-t-md" style={{ height: `${(entry.score / 80) * 100}%`, backgroundColor: entry.color }}></div>
                     </div>
-                    <div className="mt-2 text-xs text-muted-foreground font-semibold">{entry.style}</div>
+                    <div className="text-sm font-bold">{entry.score}</div>
+                    <div className="text-xs text-muted-foreground font-semibold">{entry.style}</div>
                 </div>
              ))}
            </div>
