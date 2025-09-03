@@ -4,6 +4,7 @@ import { BarChart, CartesianGrid, XAxis, YAxis, Bar, RadarChart, PolarGrid, Pola
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import type { DiscScores } from "@/lib/types";
+import { useSearchParams } from 'next/navigation';
 
 const chartConfig = {
   D: { label: "Dominance", color: "hsl(var(--chart-1))" },
@@ -13,6 +14,9 @@ const chartConfig = {
 };
 
 export function ScoreCharts({ scores }: { scores: DiscScores }) {
+  const searchParams = useSearchParams();
+  const name = searchParams.get("name") || "Participant";
+
   const chartData = [
     { style: 'D', score: scores.D, fill: "var(--color-D)" },
     { style: 'I', score: scores.I, fill: "var(--color-I)" },
@@ -43,7 +47,11 @@ export function ScoreCharts({ scores }: { scores: DiscScores }) {
                 cursor={false}
                 content={<ChartTooltipContent indicator="dot" />}
               />
-              <Bar dataKey="score" radius={8} />
+              <Bar dataKey="score" radius={8}>
+                {chartData.map((entry) => (
+                    <div key={entry.style} style={{backgroundColor: entry.fill}} />
+                ))}
+              </Bar>
             </BarChart>
           </ChartContainer>
         </CardContent>
