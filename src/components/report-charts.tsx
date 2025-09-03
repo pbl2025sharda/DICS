@@ -12,19 +12,19 @@ const chartConfig = {
   },
   D: {
     label: "Dominance",
-    color: "hsl(12 76% 61%)",
+    color: "hsl(var(--chart-1))",
   },
   I: {
     label: "Influence",
-    color: "hsl(173 58% 39%)",
+    color: "hsl(var(--chart-2))",
   },
   S: {
     label: "Steadiness",
-    color: "hsl(197 37% 24%)",
+    color: "hsl(var(--chart-3))",
   },
   C: {
     label: "Conscientiousness",
-    color: "hsl(43 74% 66%)",
+    color: "hsl(var(--chart-4))",
   },
 } satisfies ChartConfig;
 
@@ -62,8 +62,8 @@ export function ScoreCharts({ scores }: { scores: DiscScores }) {
              {chartData.map((entry) => (
                 <div key={entry.style} className="flex flex-col items-center flex-1">
                     <div className="text-sm font-bold">{entry.score}</div>
-                    <div 
-                        className="w-full rounded-t-md" 
+                    <div
+                        className="w-full rounded-t-md"
                         style={{ height: `${(entry.score / 80) * 100}%`, backgroundColor: entry.color }}
                     >
                     </div>
