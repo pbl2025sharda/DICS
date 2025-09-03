@@ -1,12 +1,10 @@
 "use client";
 
-import { BarChart, CartesianGrid, XAxis, YAxis, Bar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Cell, LabelList, Rectangle } from 'recharts';
+import { BarChart, CartesianGrid, XAxis, YAxis, Bar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, LabelList, Rectangle } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import type { DiscScores } from "@/lib/types";
-import { styleDetails } from '@/lib/disc-info';
 
-// HSL values are copied from globals.css to be used directly by recharts
 const chartConfig = {
   score: {
     label: "Score",
@@ -39,16 +37,17 @@ const colorMapping: Record<keyof DiscScores, string> = {
 const CustomBar = (props: any) => {
     const { x, y, width, height, payload } = props;
     const fillColor = colorMapping[payload.style as keyof DiscScores];
-    return <Rectangle {...props} x={x} y={y} width={width} height={height} fill={fillColor} />;
+    // We only pass the props that Rectangle needs, excluding the problematic `style` prop
+    return <Rectangle x={x} y={y} width={width} height={height} fill={fillColor} radius={8} />;
 };
 
 
 export function ScoreCharts({ scores }: { scores: DiscScores }) {
   const chartData = [
-    { style: 'D', score: scores.D },
-    { style: 'I', score: scores.I },
-    { style: 'S', score: scores.S },
-    { style: 'C', score: scores.C },
+    { style: 'D', score: scores.D, name: "Dominance" },
+    { style: 'I', score: scores.I, name: "Influence" },
+    { style: 'S', score: scores.S, name: "Steadiness" },
+    { style: 'C', score: scores.C, name: "Conscientiousness" },
   ];
 
   const radarData = [
@@ -68,11 +67,11 @@ export function ScoreCharts({ scores }: { scores: DiscScores }) {
           <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
             <BarChart accessibilityLayer data={chartData} margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
               <CartesianGrid vertical={false} />
-              <XAxis 
-                dataKey="style" 
-                tickLine={false} 
-                tickMargin={10} 
-                axisLine={false} 
+              <XAxis
+                dataKey="style"
+                tickLine={false}
+                tickMargin={10}
+                axisLine={false}
                 tickFormatter={(value) => chartConfig[value as keyof typeof chartConfig]?.label}
               />
               <YAxis domain={[0, 80]} />
@@ -80,7 +79,7 @@ export function ScoreCharts({ scores }: { scores: DiscScores }) {
                 cursor={false}
                 content={<ChartTooltipContent indicator="dot" />}
               />
-              <Bar dataKey="score" radius={8} shape={<CustomBar/>}>
+              <Bar dataKey="score" shape={<CustomBar/>}>
                  <LabelList
                     dataKey="score"
                     position="top"
