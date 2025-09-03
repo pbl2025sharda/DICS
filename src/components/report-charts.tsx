@@ -1,9 +1,10 @@
 "use client";
 
-import { BarChart, CartesianGrid, XAxis, YAxis, Bar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Cell, LabelList } from 'recharts';
+import { BarChart, CartesianGrid, XAxis, YAxis, Bar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Cell, LabelList, Rectangle } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import type { DiscScores } from "@/lib/types";
+import { styleDetails } from '@/lib/disc-info';
 
 // HSL values are copied from globals.css to be used directly by recharts
 const chartConfig = {
@@ -28,12 +29,26 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
+const colorMapping: Record<keyof DiscScores, string> = {
+    D: chartConfig.D.color,
+    I: chartConfig.I.color,
+    S: chartConfig.S.color,
+    C: chartConfig.C.color,
+};
+
+const CustomBar = (props: any) => {
+    const { x, y, width, height, payload } = props;
+    const fillColor = colorMapping[payload.style as keyof DiscScores];
+    return <Rectangle {...props} x={x} y={y} width={width} height={height} fill={fillColor} />;
+};
+
+
 export function ScoreCharts({ scores }: { scores: DiscScores }) {
   const chartData = [
-    { style: 'D', score: scores.D, fill: chartConfig.D.color },
-    { style: 'I', score: scores.I, fill: chartConfig.I.color },
-    { style: 'S', score: scores.S, fill: chartConfig.S.color },
-    { style: 'C', score: scores.C, fill: chartConfig.C.color },
+    { style: 'D', score: scores.D },
+    { style: 'I', score: scores.I },
+    { style: 'S', score: scores.S },
+    { style: 'C', score: scores.C },
   ];
 
   const radarData = [
@@ -65,7 +80,7 @@ export function ScoreCharts({ scores }: { scores: DiscScores }) {
                 cursor={false}
                 content={<ChartTooltipContent indicator="dot" />}
               />
-              <Bar dataKey="score" radius={8}>
+              <Bar dataKey="score" radius={8} shape={<CustomBar/>}>
                  <LabelList
                     dataKey="score"
                     position="top"
@@ -73,9 +88,6 @@ export function ScoreCharts({ scores }: { scores: DiscScores }) {
                     className="fill-foreground"
                     fontSize={12}
                   />
-                {chartData.map((entry) => (
-                  <Cell key={`cell-${entry.style}`} fill={entry.fill} />
-                ))}
               </Bar>
             </BarChart>
           </ChartContainer>
