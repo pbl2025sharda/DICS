@@ -24,7 +24,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'www.sharda.ac.in',
+        hostname: 'images.sharda.ac.in',
         port: '',
         pathname: '/**',
       }
