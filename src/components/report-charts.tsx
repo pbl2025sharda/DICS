@@ -47,11 +47,7 @@ export function ScoreCharts({ scores }: { scores: DiscScores }) {
                 cursor={false}
                 content={<ChartTooltipContent indicator="dot" />}
               />
-              <Bar dataKey="score" radius={8}>
-                {chartData.map((entry) => (
-                    <div key={entry.style} style={{backgroundColor: entry.fill}} />
-                ))}
-              </Bar>
+              <Bar dataKey="score" radius={8} />
             </BarChart>
           </ChartContainer>
         </CardContent>
