@@ -5,34 +5,35 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import type { DiscScores } from "@/lib/types";
 
+// HSL values are copied from globals.css to be used directly by recharts
 const chartConfig = {
   score: {
     label: "Score",
   },
   D: {
     label: "Dominance",
-    color: "hsl(var(--chart-1))",
+    color: "hsl(12 76% 61%)",
   },
   I: {
     label: "Influence",
-    color: "hsl(var(--chart-2))",
+    color: "hsl(173 58% 39%)",
   },
   S: {
     label: "Steadiness",
-    color: "hsl(var(--chart-3))",
+    color: "hsl(197 37% 24%)",
   },
   C: {
     label: "Conscientiousness",
-    color: "hsl(var(--chart-4))",
+    color: "hsl(43 74% 66%)",
   },
 } satisfies ChartConfig;
 
 export function ScoreCharts({ scores }: { scores: DiscScores }) {
   const chartData = [
-    { style: 'D', score: scores.D },
-    { style: 'I', score: scores.I },
-    { style: 'S', score: scores.S },
-    { style: 'C', score: scores.C },
+    { style: 'D', score: scores.D, fill: chartConfig.D.color },
+    { style: 'I', score: scores.I, fill: chartConfig.I.color },
+    { style: 'S', score: scores.S, fill: chartConfig.S.color },
+    { style: 'C', score: scores.C, fill: chartConfig.C.color },
   ];
 
   const radarData = [
@@ -73,7 +74,7 @@ export function ScoreCharts({ scores }: { scores: DiscScores }) {
                     fontSize={12}
                   />
                 {chartData.map((entry) => (
-                  <Cell key={`cell-${entry.style}`} fill={chartConfig[entry.style as keyof typeof chartConfig].color} />
+                  <Cell key={`cell-${entry.style}`} fill={entry.fill} />
                 ))}
               </Bar>
             </BarChart>
