@@ -1,3 +1,4 @@
+
 "use client"
 
 // Inspired by react-hot-toast library
@@ -164,6 +165,13 @@ function toast({ ...props }: Toast) {
     },
   })
 
+  // Automatically dismiss after a certain duration
+  if (props.duration) {
+    setTimeout(() => {
+      dismiss()
+    }, props.duration)
+  }
+
   return {
     id: id,
     dismiss,
@@ -192,3 +200,5 @@ function useToast() {
 }
 
 export { useToast, toast }
+
+    

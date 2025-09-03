@@ -1,6 +1,7 @@
+
 "use client";
 
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -21,9 +22,16 @@ const questionSchema = z.object({
   S: z.coerce.number().min(1).max(4),
   C: z.coerce.number().min(1).max(4),
 }).refine(data => {
-  const values = Object.values(data);
+  const values = Object.values(data).filter(v => v > 0);
   const uniqueValues = new Set(values);
-  return uniqueValues.size === 4 && values.reduce((a, b) => a + b, 0) === 10;
+  return values.length === uniqueValues.size;
+}, {
+  message: "Each rank can only be used once per question.",
+}).refine(data => {
+  const values = Object.values(data);
+  const isComplete = values.every(v => v > 0);
+  if (!isComplete) return true; // Only validate sum if all are answered
+  return values.reduce((a, b) => a + b, 0) === 10;
 }, {
   message: "Use each rank (4, 3, 2, 1) once.",
 });
@@ -50,13 +58,35 @@ export default function DiscAssessmentForm() {
     },
   });
 
-  const { watch, formState: { errors } } = form;
+  const { control, watch, setValue, getValues, formState: { errors } } = form;
+
+  const handleRadioChange = (qIndex: number, category: 'D' | 'I' | 'S' | 'C', value: string) => {
+    const numericValue = Number(value);
+    const currentQuestionAnswers = getValues(`answers.${qIndex}`);
+    
+    const otherValues = Object.entries(currentQuestionAnswers)
+      .filter(([key]) => key !== category)
+      .map(([, val]) => val);
+
+    if (otherValues.includes(numericValue) && numericValue !== 0) {
+      toast({
+        title: "Duplicate Rank",
+        description: "You have already used this rank for another statement in this question.",
+        variant: "destructive",
+        duration: 2000,
+      });
+      return; 
+    }
+    
+    setValue(`answers.${qIndex}.${category}`, numericValue, { shouldValidate: true, shouldDirty: true });
+  };
+
 
   useEffect(() => {
     const subscription = watch((value) => {
       const answeredCount = value.answers?.filter(ans => {
-        const values = Object.values(ans);
-        const uniqueValues = new Set(values);
+        const values = Object.values(ans || {});
+        const uniqueValues = new Set(values.filter(v => v > 0));
         return uniqueValues.size === 4 && values.reduce((a,b) => a+b, 0) === 10;
       }).length || 0;
       setProgress((answeredCount / 24) * 100);
@@ -134,16 +164,16 @@ export default function DiscAssessmentForm() {
                               <FormLabel className="font-normal">{statement.text}</FormLabel>
                               <FormControl>
                                 <RadioGroup
-                                  onValueChange={field.onChange}
-                                  defaultValue={field.value.toString()}
+                                  onValueChange={(value) => handleRadioChange(qIndex, category, value)}
+                                  value={field.value.toString()}
                                   className="flex justify-around items-center pt-2"
                                 >
                                   {[4, 3, 2, 1].map(val => (
                                     <FormItem key={val} className="flex flex-col items-center space-y-1">
                                       <FormControl>
-                                        <RadioGroupItem value={val.toString()} />
+                                        <RadioGroupItem value={val.toString()} id={`${field.name}-${val}`}/>
                                       </FormControl>
-                                      <FormLabel className="font-normal text-xs">{val}</FormLabel>
+                                      <FormLabel htmlFor={`${field.name}-${val}`} className="font-normal text-xs">{val}</FormLabel>
                                     </FormItem>
                                   ))}
                                 </RadioGroup>
@@ -167,3 +197,5 @@ export default function DiscAssessmentForm() {
     </div>
   );
 }
+
+    
