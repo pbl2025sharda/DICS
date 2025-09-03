@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export const Logo = () => (
-    <Image src="/sharda-university-logo.png" alt="Sharda University Logo" width={300} height={85} />
+    <img src="https://images.sharda.ac.in/du-logo.png" alt="Sharda University Logo" width={300} height={85} />
   );
