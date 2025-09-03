@@ -1,7 +1,7 @@
 
 "use client";
 
-import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts';
+import { RadarChart, PolarGrid, PolarAngleAxis, Radar } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import type { DiscScores } from "@/lib/types";
@@ -60,7 +60,7 @@ export function ScoreCharts({ scores }: { scores: DiscScores }) {
         <CardContent>
            <div className="w-full h-[250px] flex justify-around items-end gap-4 p-4 border rounded-lg bg-background/50">
              {chartData.map((entry) => (
-                <div key={entry.style} className="flex flex-col items-center flex-1 gap-2">
+                <div key={entry.style} className="flex flex-col items-center flex-1 gap-2 h-full justify-end">
                     <div
                         className="w-full rounded-t-md relative"
                         style={{ height: '100%'}}
@@ -96,4 +96,3 @@ export function ScoreCharts({ scores }: { scores: DiscScores }) {
     </div>
   );
 }
-
