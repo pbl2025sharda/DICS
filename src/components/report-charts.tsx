@@ -73,7 +73,7 @@ export function ScoreCharts({ scores }: { scores: DiscScores }) {
                     fontSize={12}
                   />
                 {chartData.map((entry) => (
-                  <Cell key={`cell-${entry.style}`} fill={`var(--color-${entry.style})`} />
+                  <Cell key={`cell-${entry.style}`} fill={chartConfig[entry.style as keyof typeof chartConfig].color} />
                 ))}
               </Bar>
             </BarChart>
