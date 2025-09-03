@@ -1,6 +1,5 @@
 "use server";
 
-import { generateDetailedDiscReport } from "@/ai/flows/generate-detailed-disc-report";
 import type { DiscScores } from "@/lib/types";
 
 export async function getAiGeneratedReport(scores: DiscScores) {

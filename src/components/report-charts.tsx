@@ -29,10 +29,10 @@ const chartConfig = {
 
 export function ScoreCharts({ scores }: { scores: DiscScores }) {
   const chartData = [
-    { style: 'D', score: scores.D, fill: "var(--color-D)" },
-    { style: 'I', score: scores.I, fill: "var(--color-I)" },
-    { style: 'S', score: scores.S, fill: "var(--color-S)" },
-    { style: 'C', score: scores.C, fill: "var(--color-C)" },
+    { style: 'D', score: scores.D },
+    { style: 'I', score: scores.I },
+    { style: 'S', score: scores.S },
+    { style: 'C', score: scores.C },
   ];
 
   const radarData = [
@@ -73,7 +73,7 @@ export function ScoreCharts({ scores }: { scores: DiscScores }) {
                     fontSize={12}
                   />
                 {chartData.map((entry) => (
-                  <Cell key={`cell-${entry.style}`} fill={entry.fill} />
+                  <Cell key={`cell-${entry.style}`} fill={`var(--color-${entry.style})`} />
                 ))}
               </Bar>
             </BarChart>

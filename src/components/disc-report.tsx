@@ -79,7 +79,7 @@ export default function DiscReport() {
   const supportingStyles = rankedStyles.slice(2);
 
   const combinationKey = [primaryStyle.style, secondaryStyle.style].sort().join("+");
-  const combinationInsight = (primaryStyle.interpretation === "High" && secondaryStyle.interpretation === "High") ? combinationInsights[combinationKey] : null;
+  const combinationInsight = (primaryStyle.interpretation === "High" && secondaryStyle.interpretation === "High") ? combinationInsights[combinationKey as keyof typeof combinationInsights] : null;
 
   if (!scores.D && !scores.I && !scores.S && !scores.C) {
     return (
