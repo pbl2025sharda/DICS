@@ -14,6 +14,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Progress } from "@/components/ui/progress";
 import { useEffect, useState } from "react";
 import { Logo } from "@/components/icons";
+import { Label } from "@/components/ui/label";
 
 // Dynamically create the Zod schema
 const questionSchema = z.object({
@@ -170,10 +171,12 @@ export default function DiscAssessmentForm() {
                                 >
                                   {[4, 3, 2, 1].map(val => (
                                     <FormItem key={val} className="flex flex-col items-center space-y-1">
-                                      <FormControl>
-                                        <RadioGroupItem value={val.toString()} id={`${field.name}-${val}`}/>
-                                      </FormControl>
-                                      <FormLabel htmlFor={`${field.name}-${val}`} className="font-normal text-xs">{val}</FormLabel>
+                                      <Label htmlFor={`${field.name}-${val}`} className="flex flex-col items-center space-y-1 cursor-pointer">
+                                        <FormControl>
+                                          <RadioGroupItem value={val.toString()} id={`${field.name}-${val}`}/>
+                                        </FormControl>
+                                        <span className="font-normal text-xs">{val}</span>
+                                      </Label>
                                     </FormItem>
                                   ))}
                                 </RadioGroup>
