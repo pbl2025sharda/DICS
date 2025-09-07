@@ -4,9 +4,9 @@ export const Logo = () => (
   <Image
     src="/sharda-university-logo.png"
     alt="Sharda University"
-    width={200}
-    height={60}
-    className="h-12 w-auto"
+    width={280}
+    height={84}
+    className="h-16 w-auto"
     priority
   />
 );
