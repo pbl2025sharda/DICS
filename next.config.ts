@@ -25,8 +25,18 @@ const nextConfig: NextConfig = {
     ],
   },
   // Allow all hosts for Replit environment
-  experimental: {
-    allowedHosts: true,
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN',
+          },
+        ],
+      },
+    ];
   },
 };
 
